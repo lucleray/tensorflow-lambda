@@ -1,0 +1,9 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "0.3.2"
+  }
+}

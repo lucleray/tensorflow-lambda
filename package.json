@@ -1,0 +1,17 @@
+{
+  "name": "tfjs-lambda",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "tfjs-node.br"
+  ],
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "iltorb": "^2.4.2",
+    "tar": "^4.4.8"
+  }
+}
