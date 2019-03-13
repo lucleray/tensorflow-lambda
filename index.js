@@ -39,7 +39,7 @@ async function createTfPromise(path) {
   return tf
 }
 
-module.exports = async function createTfLoader({
+module.exports = function createTfLoader({
   path = isLambda() ? '/tmp' : './'
 } = {}) {
   let tfPromise
