@@ -12,7 +12,7 @@ function isLambda() {
 
 async function createTfPromise(path) {
   const tfjsPath = resolve(__dirname, path, 'tfjs-node')
-  const tarPath = resolve(__dirname, 'tfjs-node.br')
+  const tarPath = 'tfjs-node.br'
 
   if (fs.existsSync(tfjsPath)) {
     const tf = requireFunc(tfjsPath)
@@ -34,7 +34,7 @@ async function createTfPromise(path) {
       .pipe(x)
   })
 
-  const tf = requireFunc(tfjsPath)
+  const tf = requireFunc(resolve(__dirname, tfjsPath))
   tf.disableDeprecationWarnings()
   return tf
 }
