@@ -4,10 +4,10 @@ workflow "build, publish" {
 }
 
 # Filter for a new tag
-action "tag" {
-  uses = "actions/bin/filter@master"
-  args = "tag"
-}
+# action "tag" {
+#   uses = "actions/bin/filter@master"
+#   args = "tag"
+# }
 
 action "install-root" {
   needs = "tag"
