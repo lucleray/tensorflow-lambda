@@ -87,7 +87,7 @@
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-layers/-/tfjs-layers-0.10.3.tgz#cf4001b5b7566b1526e65e615439e85070a1012c"
   integrity sha512-Xhaz4+ZuL2SEm3S0u4x04dMYMrcG4w4dhMOjoQW8GhAJU4p7LkmP9TmwMEHp7CIVJiJzzQy7Hg8E5fESEnJinA==
 
-"@tensorflow/tfjs-node@^0.3.2":
+"@tensorflow/tfjs-node@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-node/-/tfjs-node-0.3.2.tgz#b1108bf2ea908a12acd5731a18de8cb07f38b3e4"
   integrity sha512-N1v+DtCM3A0awDKf8lmRkHzq4LrqcWt969Ci77sXMdxC2eWqkO6t+eG4c+nlCy9RoclZo4JFwqq1MPf1dO6t+A==
