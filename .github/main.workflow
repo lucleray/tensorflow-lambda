@@ -11,19 +11,19 @@ workflow "build, publish" {
 
 action "install-root" {
 #  needs = "tag"
-  uses = "nuxt/actions-yarn@master"
+  uses = "actions/npm@master"
   args = "install"
 }
 
 action "install-build" {
 #  needs = "tag"
-  uses = "nuxt/actions-yarn@master"
-  args = "--cwd build install"
+  uses = "actions/npm@master"
+  args = "install --prefix build"
 }
 
 action "build" {
   needs = ["install-root","install-build"]
-  uses = "nuxt/actions-yarn@master"
+  uses = "actions/npm@master"
   args = "build"
 }
 
