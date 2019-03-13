@@ -29,7 +29,7 @@ action "build" {
 
 action "publish" {
   needs = "build"
-  uses = "nuxt/actions-yarn@master"
+  uses = "actions/npm@master"
   args = "publish --access public"
   secrets = ["NPM_AUTH_TOKEN"]
 }
