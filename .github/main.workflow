@@ -10,13 +10,13 @@ workflow "build, publish" {
 # }
 
 action "install-root" {
-  needs = "tag"
+#  needs = "tag"
   uses = "nuxt/actions-yarn@master"
   args = "install"
 }
 
 action "install-build" {
-  needs = "tag"
+#  needs = "tag"
   uses = "nuxt/actions-yarn@master"
   args = "--cwd build install"
 }
