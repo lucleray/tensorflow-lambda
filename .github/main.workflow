@@ -24,7 +24,7 @@ action "install-build" {
 action "build" {
   needs = ["install-root","install-build"]
   uses = "actions/npm@master"
-  args = "build"
+  args = "run build"
 }
 
 action "publish" {
