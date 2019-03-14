@@ -1,7 +1,7 @@
 const tar = require('tar')
 const iltorb = require('iltorb')
 const fs = require('fs')
-const { resolve } = require('path')
+const { resolve: pathResolve } = require('path')
 
 const requireFunc =
   typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require
@@ -11,7 +11,7 @@ function isLambda() {
 }
 
 async function createTfPromise(path) {
-  const tfjsPath = resolve(__dirname, path, 'tfjs-node')
+  const tfjsPath = pathResolve(__dirname, path, 'tfjs-node')
   const tarPath = 'tfjs-node.br'
 
   if (fs.existsSync(tfjsPath)) {
@@ -29,12 +29,12 @@ async function createTfPromise(path) {
     x.on('finish', resolve)
     x.on('error', reject)
 
-    fs.createReadStream(tarPath)
+    fs.createReadStream(pathResolve(__dirname, tarPath))
       .pipe(iltorb.decompressStream())
       .pipe(x)
   })
 
-  const tf = requireFunc(resolve(__dirname, tfjsPath))
+  const tf = requireFunc(tfjsPath)
   tf.disableDeprecationWarnings()
   return tf
 }
