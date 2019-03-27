@@ -4,7 +4,7 @@ npm install
 
 cp -R $GITHUB_WORKSPACE/build /tmp/tfjs-node
 
-cd /tmp/build-tfjs-node
+cd /tmp/tfjs-node
 
 npm install
 
