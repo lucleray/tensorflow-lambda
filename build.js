@@ -4,6 +4,6 @@ const fs = require('fs')
 const { join } = require('path')
 
 tar
-  .c({ cwd: join(__dirname, 'build') }, ['index.js', 'node_modules'])
+  .c({ cwd: '/tmp/tfjs-node' }, ['index.js', 'node_modules'])
   .pipe(iltorb.compressStream())
   .pipe(fs.createWriteStream('tfjs-node.br'))

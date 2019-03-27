@@ -15,16 +15,10 @@ action "install-root" {
   args = "install"
 }
 
-action "install-build" {
-#  needs = "tag"
-  uses = "actions/npm@master"
-  args = "install --prefix build"
-}
-
 action "build" {
-  needs = ["install-root","install-build"]
-  uses = "actions/npm@master"
-  args = "run build"
+  needs = "install-root"
+  uses = "docker://lambci/lambda:build-nodejs8.10"
+  runs = ["./build.sh"]
 }
 
 action "publish" {
