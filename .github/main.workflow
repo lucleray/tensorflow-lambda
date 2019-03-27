@@ -9,14 +9,13 @@ workflow "build, publish" {
 #   args = "tag"
 # }
 
-action "install-root" {
+#action "install-root" {
 #  needs = "tag"
-  uses = "actions/npm@master"
-  args = "install"
-}
+#  uses = "actions/npm@master"
+#  args = "install"
+#}
 
 action "build" {
-  needs = "install-root"
   uses = "docker://lambci/lambda:build-nodejs8.10"
   runs = ["./build.sh"]
 }
