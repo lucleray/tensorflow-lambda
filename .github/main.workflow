@@ -17,7 +17,7 @@ workflow "build, publish" {
 
 action "build" {
   uses = "docker://lambci/lambda:build-nodejs8.10"
-  runs = ["./build.sh"]
+  runs = ["./scripts/build.sh"]
 }
 
 action "publish" {
