@@ -3,6 +3,10 @@ const iltorb = require('iltorb')
 const fs = require('fs')
 const { resolve: pathResolve } = require('path')
 
+const TFJS_PATH = '/tmp/tfjs-node'
+const TAR_PATH = pathResolve(__dirname, 'tfjs-node.br')
+
+// this hack is required to avoid webpack/rollup/... bundling the required path
 const requireFunc =
   typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require
 
@@ -10,45 +14,48 @@ function isLambda() {
   return Boolean(process.env['AWS_LAMBDA_FUNCTION_NAME'])
 }
 
-async function createTfPromise(path) {
-  const tfjsPath = pathResolve(__dirname, path, 'tfjs-node')
-  const tarPath = 'tfjs-node.br'
-
-  if (fs.existsSync(tfjsPath)) {
-    const tf = requireFunc(tfjsPath)
-    tf.disableDeprecationWarnings()
-    return tf
-  }
-
-  fs.mkdirSync(tfjsPath)
-
-  // unzip tfjs-node
-  await new Promise((resolve, reject) => {
-    const x = tar.x({ cwd: tfjsPath })
-
-    x.on('finish', resolve)
-    x.on('error', reject)
-
-    fs.createReadStream(pathResolve(__dirname, tarPath))
-      .pipe(iltorb.decompressStream())
-      .pipe(x)
-  })
-
-  const tf = requireFunc(tfjsPath)
+async function requireTf() {
+  const tf = requireFunc(TFJS_PATH)
   tf.disableDeprecationWarnings()
   return tf
 }
 
-module.exports = function createTfLoader({
-  path = isLambda() ? '/tmp' : './'
-} = {}) {
-  let tfPromise
-
-  return async function loadTf() {
-    if (!tfPromise) {
-      tfPromise = createTfPromise(path)
-    }
-
-    return tfPromise
+async function createTfPromise() {
+  // if not in lambda environment, just require the actual package
+  // this is useful as a way to bypass tfjs-lambda in development
+  if (!isLambda()) {
+    return requireFunc('@tensorflow/tfjs-node')
   }
+
+  // if tfjs-node already exists, just require it
+  if (fs.existsSync(TFJS_PATH)) {
+    return requireTf()
+  }
+
+  // else, create the folder and deflate tfjs-node
+  fs.mkdirSync(TFJS_PATH)
+
+  // unzip tfjs-node
+  await new Promise((resolve, reject) => {
+    const x = tar.x({ cwd: TFJS_PATH })
+
+    x.on('finish', resolve)
+    x.on('error', reject)
+
+    fs.createReadStream(TAR_PATH)
+      .pipe(iltorb.decompressStream())
+      .pipe(x)
+  })
+
+  return requireTf()
+}
+
+let tfPromise
+
+module.exports = function loadTf() {
+  if (!tfPromise) {
+    tfPromise = createTfPromise()
+  }
+
+  return tfPromise
 }
