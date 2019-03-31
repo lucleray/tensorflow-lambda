@@ -1,10 +1,7 @@
 const tar = require('tar')
 const iltorb = require('iltorb')
 const fs = require('fs')
-const { resolve: pathResolve } = require('path')
-
-const TFJS_PATH = '/tmp/tfjs-node'
-const TAR_PATH = pathResolve(__dirname, 'tfjs-node.br')
+const { TFJS_PATH, TAR_PATH } = require('./constants')
 
 // this hack is required to avoid webpack/rollup/... bundling the required path
 const requireFunc =

@@ -18,6 +18,6 @@ During cold start, the files are deflated in `/tmp` and required in your node pr
 
 ## Motivation
 
-`@tensorflow/tfjs` works with AWS Lambda but the main problem is that it is slow very slow when used in node. On the other hand, `@tensorflow/tfjs-node` is fast when used with node but it is >140mo and it does not fit under AWS Lambda's size limit (50mo).
+`@tensorflow/tfjs` works with AWS Lambda but the main problem is that it is slow very slow when used in node. On the other hand, `@tensorflow/tfjs-node` is fast when used with node but it is >140mo and it does not fit under AWS Lambda's size limit (50mo) and it needs to be pre-compiled for lambda for it to work in a lambda environment.
 
 I was looking for an easy way to use tensorflowjs with lambda and I couldn't find any, so I made this package.
