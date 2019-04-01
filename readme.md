@@ -25,6 +25,10 @@ const tf = await loadTf()
 tf.tensor([1, 2, 3, 4]).print()
 ```
 
+Have a look at these examples :
+
+- [object-detection](https://github.com/sequencework/object-detection) (deployed with Zeit Now)
+
 ## Local usage
 
 When not used in a lambda environment (for example, locally on your computer when you're developing), `tensorflow-lambda` will require `@tensorflow/tfjs-node` instead of deflating a pre-compiled version in `/tmp`.
