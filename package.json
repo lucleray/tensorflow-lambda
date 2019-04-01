@@ -1,10 +1,11 @@
 {
   "name": "tfjs-lambda",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "index.js",
   "license": "MIT",
   "files": [
     "index.js",
+    "constants.js",
     "tfjs-node.br"
   ],
   "scripts": {
