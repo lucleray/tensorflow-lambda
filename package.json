@@ -1,8 +1,23 @@
 {
   "name": "tensorflow-lambda",
+  "description": "Run tensorflow on lambda",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "lucleray",
+  "homepage": "https://github.com/lucleray/tensorflow-lambda#readme",
+  "bugs": {
+    "url": "https://github.com/lucleray/tensorflow-lambda/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucleray/tensorflow-lambda.git"
+  },
   "license": "MIT",
+  "keywords": [
+    "tensorflow",
+    "nodejs",
+    "lambda"
+  ],
   "files": [
     "index.js",
     "constants.js",
