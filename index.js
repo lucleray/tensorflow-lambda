@@ -19,7 +19,7 @@ async function requireTf() {
 
 async function createTfPromise() {
   // if not in lambda environment, just require the actual package
-  // this is useful as a way to bypass tfjs-lambda in development
+  // this is useful as a way to bypass tensorflow-lambda in development
   if (!isLambda()) {
     return requireFunc('@tensorflow/tfjs-node')
   }

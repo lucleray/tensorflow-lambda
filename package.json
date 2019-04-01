@@ -1,6 +1,6 @@
 {
-  "name": "tfjs-lambda",
-  "version": "0.0.14",
+  "name": "tensorflow-lambda",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "files": [

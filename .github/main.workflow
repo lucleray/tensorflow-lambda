@@ -1,21 +1,15 @@
-workflow "build, publish" {
+workflow "build and publish" {
   on = "push"
   resolves = ["publish"]
 }
 
-# Filter for a new tag
-# action "tag" {
-#   uses = "actions/bin/filter@master"
-#   args = "tag"
-# }
-
-#action "install-root" {
-#  needs = "tag"
-#  uses = "actions/npm@master"
-#  args = "install"
-#}
+action "tag" {
+  uses = "actions/bin/filter@master"
+  args = "tag"
+}
 
 action "build" {
+  needs = "tag"
   uses = "docker://lambci/lambda:build-nodejs8.10"
   runs = ["./scripts/build.sh"]
 }

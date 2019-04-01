@@ -1,9 +1,9 @@
-## tfjs-lambda
+## tensorflow-lambda
 
 ## Usage
 
 ```js
-const loadTf = require('tfjs-lambda')
+const loadTf = require('tensorflow-lambda')
 
 const tf = await loadTf()
 
