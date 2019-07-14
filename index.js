@@ -8,7 +8,11 @@ const requireFunc =
   typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require
 
 function isLambda() {
-  return Boolean(process.env['AWS_LAMBDA_FUNCTION_NAME'])
+  // check for `now dev` environment first
+  // because `now dev` sets AWS_LAMBDA_FUNCTION_NAME
+  if (process.env.NOW_REGION === 'dev1') return false
+
+  return Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME)
 }
 
 async function requireTf() {
