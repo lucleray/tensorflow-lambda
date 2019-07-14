@@ -41,7 +41,7 @@ yarn add @tensorflow/tfjs-node --dev
 
 You can then use the package the same way you would use it in a lambda environment locally.
 
-Have a look at [these lines](https://github.com/lucleray/tensorflow-lambda/blob/affcb0e7df497616eab5e898af78edf18f0a0071/index.js#L10-L12) to understand how it detects if it runs in a lambda environement.
+Have a look at [these lines](https://github.com/lucleray/tensorflow-lambda/blob/c056a3959c117d40cc69a1e76572c856b5d23cd6/index.js#L10-L16) to understand how it detects if it runs in a lambda environement.
 
 ## How it works ?
 
