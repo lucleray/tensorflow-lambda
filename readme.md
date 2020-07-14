@@ -27,7 +27,7 @@ tf.tensor([1, 2, 3, 4]).print()
 
 Have a look at these examples :
 
-- [object-detection](https://github.com/lucleray/object-detection) (deployed with Zeit Now)
+- [object-detection](https://github.com/lucleray/object-detection) (deployed with Vercel)
 
 ## Local usage
 
